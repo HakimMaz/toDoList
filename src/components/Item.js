@@ -3,8 +3,11 @@ import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Button from './Button';
 
-export default function Item({title,key}) {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false)
+export default function Item({title,key,onPress}) {
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    const deleteItem={
+        
+    }
     return (
         <View style={styles.container} key={key}>
             <View style={styles.leftSide}>
@@ -15,7 +18,7 @@ export default function Item({title,key}) {
             />
                 <Text style={styles.title}> {title}</Text>
             </View>
-            <Button title='Delete' backgroundColor='red'/>
+            <Button title='Delete' backgroundColor='red' onPress={deleteItem}/>
         </View>
     )
 }

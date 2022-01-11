@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
+import { connect } from 'react-redux'
 import Item from './Item'
 
-export default function ListItem({items}) {
+const ListItem=({items})=> {
     
     return (
         <View style={styles.container}>
             {items.map((item)=>{
-                   return <Item key={item.id} title={item.label}/>
+                   return <Item key={item.id} title={item.label} />
             })}
         </View>
     )
@@ -19,3 +20,6 @@ const styles = StyleSheet.create({
         marginTop:20
     }
 })
+
+
+export default ListItem

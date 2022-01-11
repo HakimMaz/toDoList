@@ -1,28 +1,30 @@
 import React,{useState} from 'react'
-import { View, Text,StyleSheet,TextInput, ScrollView} from 'react-native'
+import { View, Text,StyleSheet,TextInput, ScrollView, Keyboard} from 'react-native'
 import Button from '../components/Button'
 import ListItem from '../components/ListItem'
+import {connect} from 'react-redux'
+const  Home=(props)=> {
 
-export default function Home() {
-    const[itemLabel,setItemLabel]=useState({id:'',label:''});
-    const[items,setItems]=useState([]);
+    const[item,setItem]=useState('');
   
     const addItem=()=>{
-      if(itemLabel.label.length!=0)
-       setItems([...items,itemLabel])
+      Keyboard.dismiss();
+      if(item.length!=0)
+      props.dispatch({type:'ADD_ITEM',item})
       else 
        alert('You can not add an empty item.')
     }
+    console.log(' todos', props)
     return (
         <ScrollView>
         <View style={styles.container}>
             <Text style={styles.headerTitle}>My ToDo List</Text>
             <TextInput style={styles.searchInput} 
-            onChangeText={(itemLabel,index)=>setItemLabel({id:index,label:itemLabel})} 
-            defaultValue={itemLabel}/>
+            onChangeText={(item)=>setItem(item)} 
+            />
             <Button title='Submit' backgroundColor='#037dff' onPress={addItem}/>
-            <ListItem items={items}/>   
-            <Text style={styles.result}>Total Complete Items: {items.length}</Text>
+            <ListItem items={props.items}/>   
+            <Text style={styles.result}>Total Complete Items: {props.items.length}</Text>
         </View>
         </ScrollView>
     )
@@ -63,3 +65,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',   
     }
 })
+const mapStateToProps=(state)=>({
+    items: state.todos.items
+})
+export default connect(mapStateToProps)(Home)
