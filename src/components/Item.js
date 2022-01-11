@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
-import { View, Text,StyleSheet, TouchableHighlight} from 'react-native'
+import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
+import Button from './Button';
 
 export default function Item() {
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
@@ -14,9 +15,7 @@ export default function Item() {
             />
                 <Text style={styles.title}> first item</Text>
             </View>
-            <TouchableHighlight style={styles.rightSide}>
-                <Text style={styles.action}>Delete</Text>
-            </TouchableHighlight>
+            <Button title='Delete' backgroundColor='red'/>
         </View>
     )
 }

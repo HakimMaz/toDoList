@@ -1,10 +1,25 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text ,TouchableHighlight,StyleSheet} from 'react-native'
 
-export default function Button({title}) {
+export default function Button({title,backgroundColor}) {
     return (
-        <View style={StyleSheet.container}>
-            <Text style={StyleSheet.title}>{title}</Text>
-        </View>
+        <TouchableHighlight style={[styles.container,{backgroundColor}]}>
+            <Text style={styles.title}>{title}</Text>
+        </TouchableHighlight>
     )
 }
+const styles = StyleSheet.create({
+    container:{
+        flexDirection:'row',
+        height:40,
+        width:'25%',
+        //backgroundColor:'red',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:5
+    },
+    title:{
+        color:'#fff'
+    },
+    
+})
