@@ -3,7 +3,7 @@ import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Button from './Button';
 
-export default function Item() {
+export default function Item({title}) {
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <View style={styles.container}>
@@ -13,7 +13,7 @@ export default function Item() {
               value={toggleCheckBox}
               onValueChange={(newValue) => setToggleCheckBox(newValue)}
             />
-                <Text style={styles.title}> first item</Text>
+                <Text style={styles.title}> {title}</Text>
             </View>
             <Button title='Delete' backgroundColor='red'/>
         </View>
@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
     },
     title:{
         marginLeft:10,
-        alignSelf:'center'
+        alignSelf:'center',
+        fontSize:16,
+        fontWeight:'bold'
     },
     rightSide:{
         flexDirection:'row',

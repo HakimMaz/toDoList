@@ -2,12 +2,13 @@ import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
 import Item from './Item'
 
-export default function ListItem() {
+export default function ListItem({items}) {
+    
     return (
         <View style={styles.container}>
-           <Item/>
-           <Item/>
-           <Item/>
+            {items.map((item)=>{
+                   return <Item key={item.id} title={item.label}/>
+            })}
         </View>
     )
 }

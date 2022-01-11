@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text ,TouchableHighlight,StyleSheet} from 'react-native'
 
-export default function Button({title,backgroundColor}) {
+export default function Button({title,backgroundColor,onPress}) {
     return (
-        <TouchableHighlight style={[styles.container,{backgroundColor}]}>
+        <TouchableHighlight style={[styles.container,{backgroundColor}]} onPress={onPress}>
             <Text style={styles.title}>{title}</Text>
         </TouchableHighlight>
     )
