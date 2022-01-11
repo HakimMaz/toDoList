@@ -8,7 +8,10 @@ export default function Home() {
     const[items,setItems]=useState([]);
   
     const addItem=()=>{
+      if(itemLabel.label.length!=0)
        setItems([...items,itemLabel])
+      else 
+       alert('You can not add an empty item.')
     }
     return (
         <ScrollView>
