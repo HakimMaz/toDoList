@@ -3,10 +3,10 @@ import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Button from './Button';
 
-export default function Item({title}) {
+export default function Item({title,key}) {
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
-        <View style={styles.container}>
+        <View style={styles.container} key={key}>
             <View style={styles.leftSide}>
             <CheckBox
               disabled={false}
