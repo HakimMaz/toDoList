@@ -11,7 +11,7 @@ const App = () => {
   
   return (
     <SafeAreaView >
-      <Text>hello to do list </Text>
+      <Text>hello items</Text>
     </SafeAreaView>
   );
 };
