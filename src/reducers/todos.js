@@ -14,11 +14,7 @@ const todos=(state=initialState,action)=>{
             }
 
         case 'REMOVE_ITEM':
-            console.log(" state ", state.items);
-            console.log("action", action.id)
             const newItems=state.items.filter((item)=> action.id!=item.id)
-            console.log(" id ", newItems)
-
             return {
                 ...state,
                 items:newItems
