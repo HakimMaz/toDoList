@@ -7,8 +7,8 @@ const ListItem=({items})=> {
     
     return (
         <View style={styles.container}>
-            {items.map((item)=>{
-                   return <Item key={item.id} title={item.label} />
+            {items.map((item,i)=>{
+                   return <Item key={item.id} title={item.label} id={item.id} />
             })}
         </View>
     )

@@ -9,18 +9,23 @@ const  Home=(props)=> {
   
     const addItem=()=>{
       Keyboard.dismiss();
-      if(item.length!=0)
-      props.dispatch({type:'ADD_ITEM',item})
+      if(item.length!=0){
+        props.dispatch({type:'ADD_ITEM',item})
+        setItem('')
+      }
+     
       else 
        alert('You can not add an empty item.')
     }
-    console.log(' todos', props)
+
     return (
         <ScrollView>
         <View style={styles.container}>
             <Text style={styles.headerTitle}>My ToDo List</Text>
-            <TextInput style={styles.searchInput} 
+            <TextInput 
+            style={styles.searchInput} 
             onChangeText={(item)=>setItem(item)} 
+            value={item}
             />
             <Button title='Submit' backgroundColor='#037dff' onPress={addItem}/>
             <ListItem items={props.items}/>   

@@ -1,15 +1,10 @@
 const initialState={
-    items:[
-        {id:1,label:'hello'},
-        {id:2,label:'good morning'},
-        {id:3,label:'done'}
-    ]
+    items:[]
 }
-let nextId=4;
+let nextId=0;
 const todos=(state=initialState,action)=>{
     switch(action.type){
         case 'ADD_ITEM':
-            console.log(" item", action.item)
             return {
                 ...state,
                 items:[...state.items,
@@ -19,11 +14,14 @@ const todos=(state=initialState,action)=>{
             }
 
         case 'REMOVE_ITEM':
-            const newItems=[...state.items];
+            console.log(" state ", state.items);
+            console.log("action", action.id)
+            const newItems=state.items.filter((item)=> action.id!=item.id)
+            console.log(" id ", newItems)
 
             return {
                 ...state,
-                items:newItems.filter((item)=>{item.id1!=action.id})
+                items:newItems
             };
 
         default:

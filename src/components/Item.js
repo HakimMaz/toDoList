@@ -2,14 +2,15 @@ import React,{useState} from 'react'
 import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Button from './Button';
+import { connect } from 'react-redux';
 
-export default function Item({title,key,onPress}) {
+ const Item=({title,id,dispatch})=>{
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
-    const deleteItem={
-        
+    const deleteItem=()=>{
+        dispatch({type:'REMOVE_ITEM',id})
     }
     return (
-        <View style={styles.container} key={key}>
+        <View style={styles.container} >
             <View style={styles.leftSide}>
             <CheckBox
               disabled={false}
@@ -18,7 +19,7 @@ export default function Item({title,key,onPress}) {
             />
                 <Text style={styles.title}> {title}</Text>
             </View>
-            <Button title='Delete' backgroundColor='red' onPress={deleteItem}/>
+            <Button title='Delete' backgroundColor='red' onPress={(id)=>deleteItem(id)}/>
         </View>
     )
 }
@@ -60,3 +61,4 @@ const styles = StyleSheet.create({
         alignSelf: "center",
       },
 })
+export default connect()(Item)
