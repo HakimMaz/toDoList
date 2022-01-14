@@ -6,7 +6,9 @@ import {connect} from 'react-redux'
 const  Home=(props)=> {
 
     const[item,setItem]=useState('');
-  
+    const onChangeItem=(item)=>{
+     setItem(item)
+    }
     const addItem=()=>{
       Keyboard.dismiss();
       if(item.length!=0){
@@ -24,7 +26,7 @@ const  Home=(props)=> {
             <Text style={styles.headerTitle}>My ToDo List</Text>
             <TextInput 
             style={styles.searchInput} 
-            onChangeText={(item)=>setItem(item)} 
+            onChangeText={(item)=>onChangeItem(item)} 
             value={item}
             />
             <Button title='Submit' backgroundColor='#037dff' onPress={addItem}/>
