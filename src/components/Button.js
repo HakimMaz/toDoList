@@ -8,6 +8,7 @@ export default function Button({title,backgroundColor,onPress}) {
         </TouchableHighlight>
     )
 }
+// adding style
 const styles = StyleSheet.create({
     container:{
         flexDirection:'row',
