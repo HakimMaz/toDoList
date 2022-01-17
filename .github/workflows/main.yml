@@ -25,5 +25,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: todoList-release
-          path: android/app/build/outputs/apk/release/todoList.apk
+          name: todoList.apk
+          path: android/app/build/outputs/apk/release/
