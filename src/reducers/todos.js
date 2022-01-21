@@ -2,15 +2,16 @@ import {ADD_ITEM,REMOVE_ITEM,GET_ALL_ITEMS} from '../actions/todosActions'
 const initialState={
     items:[]
 }
-let nextId=0;
 const todos=(state=initialState,action)=>{
     switch(action.type){
         case ADD_ITEM:
             return {
                 ...state,
                 items:[...state.items,
-                       {id:nextId++,
-                        label:action.item}
+                       {id:action.payload.id,
+                        title:action.payload.title,
+                        completed: false
+                         }
                     ]
             }
 

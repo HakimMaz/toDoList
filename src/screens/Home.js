@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
 const mapStateToProps=(state)=>({
     items: state.todos.items
 })
-export default connect(mapStateToProps,{getAllItems})(Home)
+export default connect(mapStateToProps,{getAllItems,addItem})(Home)

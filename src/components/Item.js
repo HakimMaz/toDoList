@@ -3,11 +3,11 @@ import { View, Text,StyleSheet} from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Button from './Button';
 import { connect } from 'react-redux';
-
- const Item=({title,id,dispatch})=>{
-    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+import {removeItem} from '../actions/todosActions'
+ const Item=(props)=>{
+    const [toggleCheckBox, setToggleCheckBox] = useState(props.selected);
     const deleteItem=()=>{
-        dispatch({type:'REMOVE_ITEM',id})
+        props.removeItem(props.id)
     }
     return (
         <View style={styles.container} >
@@ -17,15 +17,15 @@ import { connect } from 'react-redux';
               value={toggleCheckBox}
               onValueChange={(newValue) => setToggleCheckBox(newValue)}
             />
-                <Text style={styles.title}> {title}</Text>
+                <Text style={styles.title}> {props.title}</Text>
             </View>
-            <Button title='Delete' backgroundColor='red' onPress={(id)=>deleteItem(id)}/>
+            <Button  title='Delete' backgroundColor='red' onPress={()=>deleteItem(props.id)}/>
         </View>
     )
 }
 const styles = StyleSheet.create({
     container:{
-        height:100,
+        flex:1,
         width:'100%',
         backgroundColor:'#fff',
         borderColor:'#dddddd',
@@ -33,17 +33,20 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         paddingHorizontal:20,
-        justifyContent:'space-between'
+        paddingVertical:20,
+        justifyContent:'space-around'
     },
     leftSide:{
        flexDirection:'row',
-       //justifyContent:'space-between'
     },
     title:{
         marginLeft:10,
         alignSelf:'center',
         fontSize:16,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        flex:1,
+        flexWrap:'wrap',
+        maxWidth:'70%'
     },
     rightSide:{
         flexDirection:'row',
@@ -61,4 +64,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
       },
 })
-export default connect()(Item)
+const mapStateToProps=(state)=>({
+})
+export default connect(mapStateToProps,{removeItem})(Item)

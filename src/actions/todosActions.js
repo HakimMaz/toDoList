@@ -11,7 +11,6 @@ export const getAllItems = () => {
       
       try {
         const result= await axios.get(url);
-        console.log("result: " , result.data)
         await dispatch({
           type: GET_ALL_ITEMS,
           payload: result.data,
@@ -22,19 +21,30 @@ export const getAllItems = () => {
       }
     }
   }
+
 export function addItem (item){
-
-
-
-}
+    let body={title:item}
+    return async function (dispatch) {
+      
+        try {
+          const result= await axios.post(url,body);
+          console.log({result})
+          await dispatch({
+            type: ADD_ITEM,
+            payload: result.data,
+          })
+    
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    }
 
 export const removeItem = (id)=>{
     return async function (dispatch) {
       
         try {
-            console.log('calling step 2',id)
-          const result= await axios.delete(url+`/${id}`);
-          console.log("result: " , result.data)
+          await axios.delete(url+`/${id}`);
           await dispatch({
             type: REMOVE_ITEM,
             payload: id,
