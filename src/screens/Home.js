@@ -1,18 +1,24 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { View, Text,StyleSheet,TextInput, ScrollView, Keyboard} from 'react-native'
 import Button from '../components/Button'
 import ListItem from '../components/ListItem'
 import {connect} from 'react-redux'
+import {addItem,getAllItems} from '../actions/todosActions'
 const  Home=(props)=> {
 
     const[item,setItem]=useState('');
+    
+    useEffect(() => {
+      props.getAllItems();
+      
+    }, [])
     const onChangeItem=(item)=>{
      setItem(item)
     }
     const addItem=()=>{
       Keyboard.dismiss();
       if(item.length!=0){
-        props.dispatch({type:'ADD_ITEM',item})
+        props.addItem(item)
         setItem('')
       }
      
@@ -75,4 +81,4 @@ const styles = StyleSheet.create({
 const mapStateToProps=(state)=>({
     items: state.todos.items
 })
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps,{getAllItems})(Home)

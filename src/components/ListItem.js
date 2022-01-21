@@ -8,7 +8,7 @@ const ListItem=({items})=> {
     return (
         <View style={styles.container}>
             {items.map((item,i)=>{
-                   return <Item key={item.id} title={item.label} id={item.id} />
+                   return <Item key={item.id} title={item.title} id={item.id} selected={item.completed} />
             })}
         </View>
     )
